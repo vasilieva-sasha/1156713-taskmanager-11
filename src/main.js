@@ -365,12 +365,18 @@ const render = (container, template, place) => {
   container.insertAdjacentHTML(place, template);
 };
 
-render(siteHeaderElement, createMenuTemplate(), BEFOREEND);
-render(siteMainElement, createFiltersTemplate(), BEFOREEND);
-render(siteMainElement, createBoardContainerTemplate(), BEFOREEND);
+const renderTasks = () => {
+  const taskListElement = siteMainElement.querySelector(`.board__tasks`);
+  for (let i = 0; i < TASK_COUNT; i++) {
+    render(taskListElement, createTaskTemplate(), BEFOREEND);
+  }
+};
 
-const taskListElement = siteMainElement.querySelector(`.board__tasks`);
+const renderPage = () => {
+  render(siteHeaderElement, createMenuTemplate(), BEFOREEND);
+  render(siteMainElement, createFiltersTemplate(), BEFOREEND);
+  render(siteMainElement, createBoardContainerTemplate(), BEFOREEND);
+  renderTasks();
+};
 
-for (let i = 0; i < TASK_COUNT; i++) {
-  render(taskListElement, createTaskTemplate(), BEFOREEND);
-}
+renderPage();
