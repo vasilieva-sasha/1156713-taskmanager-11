@@ -1,6 +1,6 @@
 import {createMenuTemplate} from "./components/site-menu.js";
 import {createFiltersTemplate} from "./components/filter.js";
-import {renderTasks} from "./components/tasks.js";
+import {renderTasks} from "./tools/render-tasks.js";
 import {createBoardContainerTemplate} from "./components/board-container.js";
 import {render} from "./tools/utils.js";
 import {BEFOREEND} from "./tools/consts.js";

@@ -1,6 +1,3 @@
-import {render} from "./../tools/utils.js";
-import {TASK_COUNT, BEFOREEND} from "./../tools/consts.js";
-
 export const createTaskTemplate = () => {
   return (
     `<article class="card card--black">
@@ -49,9 +46,4 @@ export const createTaskTemplate = () => {
   );
 };
 
-export const renderTasks = () => {
-  const taskListElement = document.querySelector(`.board__tasks`);
-  for (let i = 0; i < TASK_COUNT; i++) {
-    render(taskListElement, createTaskTemplate(), BEFOREEND);
-  }
-};
+
