@@ -1,22 +1,13 @@
-import {MONTH_NAMES} from "../../tools/consts.js";
-import {formatTime} from "../../tools/utils.js";
+import {getDeadlineClass, getRepeatClass, getDate, getTime} from "../task/tools.js";
 
 export const createTaskTemplate = (task) => {
   const {description, dueDate, color, repeatingDays, isArchive, isFavorite} = task;
 
-  const isExpired = dueDate instanceof Date && dueDate < Date.now();
-  const isDateShowing = !!dueDate;
-
-  const date = isDateShowing ? `${dueDate.getDate()} ${MONTH_NAMES[dueDate.getMonth()]}` : ``;
-  const time = isDateShowing ? formatTime(dueDate) : ``;
-
-  const repeatClass = Object.values(repeatingDays).some(Boolean) ? `card--repeat` : ``;
-  const deadlineClass = isExpired ? `card--deadline` : ``;
-
   const isArchiveButtonActive = isArchive ? `` : `card__btn--disabled`;
   const isFavoriteButtonActive = isFavorite ? `` : `card__btn--disabled`;
+
   return (
-    `<article class="card card--${color} ${repeatClass} ${deadlineClass}">
+    `<article class="card card--${color} ${getRepeatClass(repeatingDays)} ${getDeadlineClass(dueDate)}">
       <div class="card__form">
         <div class="card__inner">
           <div class="card__control">
@@ -49,8 +40,8 @@ export const createTaskTemplate = (task) => {
               <div class="card__dates">
                 <div class="card__date-deadline">
                   <p class="card__input-deadline-wrap">
-                    <span class="card__date">${date}</span>
-                    <span class="card__time">${time}</span>
+                    <span class="card__date">${getDate(dueDate)}</span>
+                    <span class="card__time">${getTime(dueDate)}</span>
                   </p>
                 </div>
               </div>

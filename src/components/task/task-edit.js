@@ -1,25 +1,14 @@
-import {MONTH_NAMES, DAYS, COLORS} from "../../tools/consts.js";
-import {formatTime} from "../../tools/utils.js";
+import {COLORS} from "../../tools/consts.js";
+import {getDeadlineClass, showDate, getDeadLineMarkup, showRepeat, getRepeatClass, getRepeatingDaysMarkup} from "../task/tools.js";
 import {createColorsMarkup} from "./colors-markup.js";
-import {createRepeatingDaysMarkup} from "./repeating-days-markup.js";
+
 
 export const createTaskEditTemplate = (task) => {
   const {description, dueDate, color, repeatingDays} = task;
-
-  const isExpired = dueDate instanceof Date && dueDate < Date.now();
-  const isDateShowing = !!dueDate;
-
-  const date = isDateShowing ? `${dueDate.getDate()} ${MONTH_NAMES[dueDate.getMonth()]}` : ``;
-  const time = isDateShowing ? formatTime(dueDate) : ``;
-
-  const isRepeatingTask = Object.values(repeatingDays).some(Boolean);
-  const repeatClass = isRepeatingTask ? `card--repeat` : ``;
-  const deadlineClass = isExpired ? `card--deadline` : ``;
-
   const colorsMarkup = createColorsMarkup(COLORS);
-  const repeatingDaysMarkup = createRepeatingDaysMarkup(DAYS, repeatingDays);
+
   return (
-    `<article class="card card--edit card--${color} ${repeatClass} ${deadlineClass}">
+    `<article class="card card--edit card--${color} ${getRepeatClass(repeatingDays)} ${getDeadlineClass(dueDate)}">
       <form class="card__form" method="get">
         <div class="card__inner">
           <div class="card__color-bar">
@@ -42,37 +31,18 @@ export const createTaskEditTemplate = (task) => {
             <div class="card__details">
               <div class="card__dates">
                 <button class="card__date-deadline-toggle" type="button">
-                  date: <span class="card__date-status">${isDateShowing ? `yes` : `no`}</span>
+                  date: <span class="card__date-status">${showDate(dueDate)}</span>
                 </button>
 
-                ${isDateShowing ?
-      `<fieldset class="card__date-deadline">
-        <label class="card__input-deadline-wrap">
-          <input
-            class="card__date"
-            type="text"
-            placeholder=""
-            name="date"
-            value="${date} ${time}"
-          />
-        </label>
-      </fieldset>`
-      : `` }
+                ${getDeadLineMarkup(dueDate)}
 
                 <button class="card__repeat-toggle" type="button">
                   repeat:repeat:
-                  <span class="card__repeat-status">${isRepeatingTask ? `yes` : `no`}</span>
+                  <span class="card__repeat-status">${showRepeat(repeatingDays)}</span>
                 </button>
 
-                ${
-    isRepeatingTask ?
-      `<fieldset class="card__repeat-days">
-                        <div class="card__repeat-days-inner">
-                          ${repeatingDaysMarkup}
-                        </div>
-                      </fieldset>`
-      : ``
-    }
+                ${getRepeatingDaysMarkup(repeatingDays)}
+
               </div>
             </div>
 

@@ -8,7 +8,5 @@ export const tasks = generateTasks(TASK_COUNT);
 export const renderTasks = () => {
   const taskListElement = document.querySelector(`.board__tasks`);
   tasks.slice(1, SHOWING_TASKS_COUNT_ON_START)
-  .forEach((task) => {
-    render(taskListElement, createTaskTemplate(task), BEFOREEND);
-  });
+  .forEach((task) => render(taskListElement, createTaskTemplate(task), BEFOREEND));
 };

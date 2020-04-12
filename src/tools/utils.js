@@ -18,3 +18,5 @@ export const getRandomElement = (array) => {
 };
 
 export const getBoolean = () => Math.random() > 0.5;
+
+export const getCheckedClass = (isChecked) => isChecked ? `checked` : ``;

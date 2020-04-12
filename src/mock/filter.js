@@ -16,10 +16,6 @@ const getFavoriteCount = () => {
   .length;
 };
 
-// const getRepeatingCount = () => {
-// не смогла :(
-// };
-
 const getArchiveCount = () => {
   return tasks.filter((task) => task.isArchive)
   .length;

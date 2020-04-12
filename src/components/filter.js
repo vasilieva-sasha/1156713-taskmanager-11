@@ -1,3 +1,5 @@
+import {getCheckedClass} from "./../tools/utils.js";
+
 const createFilterMarkup = (filter, isChecked) => {
   const {name, count} = filter;
   return (
@@ -6,7 +8,7 @@ const createFilterMarkup = (filter, isChecked) => {
       id="filter__${name}"
       class="filter__input visually-hidden"
       name="filter"
-      ${isChecked ? `checked` : ``}
+      ${getCheckedClass(isChecked)}
     />
     <label for="filter__${name}" class="filter__label">
     ${name} <span class="filter__${name}-count">${count}</span></label
@@ -14,8 +16,8 @@ const createFilterMarkup = (filter, isChecked) => {
   );
 };
 
-export const createFiltersTemplate = (filter) => {
-  const filtersMurkup = filter.map((it, i) => createFilterMarkup(it, i === 0)).join(`\n`);
+export const createFiltersTemplate = (filters) => {
+  const filtersMurkup = filters.map((filter, i) => createFilterMarkup(filter, i === 0)).join(`\n`);
   return (
     ` <section class="main__filter filter container">
         ${filtersMurkup}

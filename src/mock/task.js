@@ -15,19 +15,13 @@ const getRandomDate = () => {
   return new Date(newDate);
 };
 
-export const generateTask = () => {
-  return {
-    description: getRandomElement(descriptions),
-    dueDate: getBoolean() ? getRandomDate() : null,
-    repeatingDays: getRepeatingDays(),
-    color: getRandomElement(COLORS),
-    isArchive: getBoolean(),
-    isFavorite: getBoolean(),
-  };
-};
+export const generateTask = () => ({
+  description: getRandomElement(descriptions),
+  dueDate: getBoolean() ? getRandomDate() : null,
+  repeatingDays: getRepeatingDays(),
+  color: getRandomElement(COLORS),
+  isArchive: getBoolean(),
+  isFavorite: getBoolean(),
+});
 
-export const generateTasks = (count) => {
-  return new Array(count)
-    .fill(``)
-    .map(generateTask);
-};
+export const generateTasks = (count) => new Array(count).fill(``).map(generateTask);

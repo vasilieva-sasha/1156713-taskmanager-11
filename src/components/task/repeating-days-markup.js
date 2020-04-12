@@ -1,19 +1,25 @@
-export const createRepeatingDaysMarkup = (days, repeatingDays) => {
-  return days
-  .map((day, index) => {
-    const isChecked = repeatingDays[day];
-    return (
-      `<input
+import {getCheckedClass} from "./../../tools/utils.js";
+
+const createDaysTemplate = (day, index, isChecked) => {
+  return (
+    `<input
       class="visually-hidden card__repeat-day-input"
       type="checkbox"
       id="repeat-${day}-${index}"
       name="repeat"
       value="${day}"
-      ${isChecked ? `checked` : ``}
-    />
+      ${getCheckedClass(isChecked)}
+      />
     <label class="card__repeat-day" for="repeat-${day}-${index}"
       >${day}</label>`
-    );
+  );
+};
+
+export const createRepeatingDaysMarkup = (days, repeatingDays) => {
+  return days
+  .map((day, index) => {
+    const isChecked = repeatingDays[day];
+    return createDaysTemplate(day, index, isChecked);
   })
   .join(`\n`);
 };
