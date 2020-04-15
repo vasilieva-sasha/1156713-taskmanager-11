@@ -1,4 +1,4 @@
-import {getCheckedClass} from "./../tools/utils.js";
+import {getCheckedClass} from "./../tools/utils";
 
 const createFilterMarkup = (filter, isChecked) => {
   const {name, count} = filter;
@@ -16,7 +16,7 @@ const createFilterMarkup = (filter, isChecked) => {
   );
 };
 
-export const createFiltersTemplate = (filters) => {
+const createFiltersTemplate = (filters) => {
   const filtersMurkup = filters.map((filter, i) => createFilterMarkup(filter, i === 0)).join(`\n`);
   return (
     ` <section class="main__filter filter container">
@@ -24,3 +24,5 @@ export const createFiltersTemplate = (filters) => {
       </section>`
   );
 };
+
+export {createFiltersTemplate};

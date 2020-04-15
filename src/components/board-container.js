@@ -1,12 +1,12 @@
-import {createSortingTemplate} from "./sorting.js";
-import {createTaskEditTemplate} from "./task/task-edit.js";
-import {createLoadButtonTemplate} from "./load-button.js";
-import {generateTasks} from "../mock/task.js";
-import {TASK_COUNT} from "../tools/consts.js";
+import {createSortingTemplate} from "./sorting";
+import {createTaskEditTemplate} from "./task/task-edit";
+import {createLoadButtonTemplate} from "./load-button";
+import {generateTasks} from "../mock/task";
+import {TASK_COUNT} from "../tools/consts";
 
-export const tasks = generateTasks(TASK_COUNT);
+const tasks = generateTasks(TASK_COUNT);
 
-export const createBoardContainerTemplate = () => {
+const createBoardContainerTemplate = () => {
   return (
     `<section class="board container">
       ${createSortingTemplate()}
@@ -17,3 +17,5 @@ export const createBoardContainerTemplate = () => {
     </section>`
   );
 };
+
+export {tasks, createBoardContainerTemplate};

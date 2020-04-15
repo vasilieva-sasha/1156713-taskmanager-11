@@ -1,4 +1,4 @@
-import {getCheckedClass} from "./../../tools/utils.js";
+import {getCheckedClass} from "./../../tools/utils";
 
 const createDaysTemplate = (day, index, isChecked) => {
   return (
@@ -15,7 +15,7 @@ const createDaysTemplate = (day, index, isChecked) => {
   );
 };
 
-export const createRepeatingDaysMarkup = (days, repeatingDays) => {
+const createRepeatingDaysMarkup = (days, repeatingDays) => {
   return days
   .map((day, index) => {
     const isChecked = repeatingDays[day];
@@ -23,3 +23,5 @@ export const createRepeatingDaysMarkup = (days, repeatingDays) => {
   })
   .join(`\n`);
 };
+
+export {createRepeatingDaysMarkup};

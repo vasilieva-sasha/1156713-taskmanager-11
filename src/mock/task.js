@@ -1,5 +1,5 @@
-import {DAYS, COLORS} from "../tools/consts.js";
-import {getRandomElement, getBoolean} from "../tools/utils.js";
+import {DAYS, COLORS} from "../tools/consts";
+import {getRandomElement, getBoolean} from "../tools/utils";
 
 const descriptions = [`Изучить теорию`, `Сделать домашку`, `Пройти интенсив на соточку`];
 
@@ -15,7 +15,7 @@ const getRandomDate = () => {
   return new Date(newDate);
 };
 
-export const generateTask = () => ({
+const generateTask = () => ({
   description: getRandomElement(descriptions),
   dueDate: getBoolean() ? getRandomDate() : null,
   repeatingDays: getRepeatingDays(),
@@ -24,4 +24,6 @@ export const generateTask = () => ({
   isFavorite: getBoolean(),
 });
 
-export const generateTasks = (count) => new Array(count).fill(``).map(generateTask);
+const generateTasks = (count) => new Array(count).fill(``).map(generateTask);
+
+export {generateTask, generateTasks};

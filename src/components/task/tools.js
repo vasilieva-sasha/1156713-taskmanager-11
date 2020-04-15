@@ -1,16 +1,16 @@
-import {formatTime} from "./../../tools/utils.js";
-import {DAYS, MONTH_NAMES} from "./../../tools/consts.js";
-import {createRepeatingDaysMarkup} from "./repeating-days-markup.js";
+import {formatTime} from "./../../tools/utils";
+import {DAYS, MONTH_NAMES} from "./../../tools/consts";
+import {createRepeatingDaysMarkup} from "./repeating-days-markup";
 
-export const getExpiredclass = (dueDate) => dueDate instanceof Date && dueDate < Date.now();
+const getExpiredclass = (dueDate) => dueDate instanceof Date && dueDate < Date.now();
 const isDateShowing = (dueDate) => !!dueDate;
 
-export const showDate = (dueDate) => isDateShowing(dueDate) ? `yes` : `no`;
+const showDate = (dueDate) => isDateShowing(dueDate) ? `yes` : `no`;
 
-export const getDate = (dueDate) => isDateShowing(dueDate) ? `${dueDate.getDate()} ${MONTH_NAMES[dueDate.getMonth()]}` : ``;
-export const getTime = (dueDate) => isDateShowing(dueDate) ? formatTime(dueDate) : ``;
+const getDate = (dueDate) => isDateShowing(dueDate) ? `${dueDate.getDate()} ${MONTH_NAMES[dueDate.getMonth()]}` : ``;
+const getTime = (dueDate) => isDateShowing(dueDate) ? formatTime(dueDate) : ``;
 
-export const getDeadLineMarkup = (dueDate) => {
+const getDeadLineMarkup = (dueDate) => {
   return (
     isDateShowing(dueDate) ?
       `<fieldset class="card__date-deadline">
@@ -30,14 +30,14 @@ export const getDeadLineMarkup = (dueDate) => {
 
 const isRepeatingTask = (repeatingDays) => Object.values(repeatingDays).some(Boolean);
 
-export const showRepeat = (repeatingDays) => isRepeatingTask(repeatingDays) ? `yes` : `no`;
-export const getRepeatClass = (repeatingDays) => {
+const showRepeat = (repeatingDays) => isRepeatingTask(repeatingDays) ? `yes` : `no`;
+const getRepeatClass = (repeatingDays) => {
   return isRepeatingTask(repeatingDays) ? `card--repeat` : ``;
 };
 
-export const getDeadlineClass = (dueDate) => getExpiredclass(dueDate) ? `card--deadline` : ``;
+const getDeadlineClass = (dueDate) => getExpiredclass(dueDate) ? `card--deadline` : ``;
 
-export const getRepeatingDaysMarkup = (repeatingDays) => {
+const getRepeatingDaysMarkup = (repeatingDays) => {
   const repeatingDaysMarkup = createRepeatingDaysMarkup(DAYS, repeatingDays);
   return (
     isRepeatingTask(repeatingDays) ?
@@ -49,3 +49,5 @@ export const getRepeatingDaysMarkup = (repeatingDays) => {
       : ``
   );
 };
+
+export {getExpiredclass, showDate, getDate, getTime, getDeadLineMarkup, showRepeat, getRepeatClass, getDeadlineClass, getRepeatingDaysMarkup};

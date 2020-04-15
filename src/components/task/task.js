@@ -1,6 +1,6 @@
-import {getDeadlineClass, getRepeatClass, getDate, getTime} from "../task/tools.js";
+import {getDeadlineClass, getRepeatClass, getDate, getTime} from "../task/tools";
 
-export const createTaskTemplate = (task) => {
+const createTaskTemplate = (task) => {
   const {description, dueDate, color, repeatingDays, isArchive, isFavorite} = task;
 
   const isArchiveButtonActive = isArchive ? `` : `card__btn--disabled`;
@@ -53,4 +53,4 @@ export const createTaskTemplate = (task) => {
   );
 };
 
-
+export {createTaskTemplate};

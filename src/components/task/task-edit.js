@@ -1,9 +1,9 @@
-import {COLORS} from "../../tools/consts.js";
-import {getDeadlineClass, showDate, getDeadLineMarkup, showRepeat, getRepeatClass, getRepeatingDaysMarkup} from "../task/tools.js";
-import {createColorsMarkup} from "./colors-markup.js";
+import {COLORS} from "../../tools/consts";
+import {getDeadlineClass, showDate, getDeadLineMarkup, showRepeat, getRepeatClass, getRepeatingDaysMarkup} from "../task/tools";
+import {createColorsMarkup} from "./colors-markup";
 
 
-export const createTaskEditTemplate = (task) => {
+const createTaskEditTemplate = (task) => {
   const {description, dueDate, color, repeatingDays} = task;
   const colorsMarkup = createColorsMarkup(COLORS);
 
@@ -63,3 +63,5 @@ export const createTaskEditTemplate = (task) => {
     </article>`
   );
 };
+
+export {createTaskEditTemplate};

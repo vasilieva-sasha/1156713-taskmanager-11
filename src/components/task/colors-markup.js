@@ -12,9 +12,11 @@ const createColorsTemplate = (color) => {
       class="card__color card__color--${color}"
       >${color}</label
     >`
-  )
+  );
 };
 
-export const createColorsMarkup = (colors) => {
+const createColorsMarkup = (colors) => {
   return colors.map((color) => createColorsTemplate(color)).join(`\n`);
 };
+
+export {createColorsMarkup};
