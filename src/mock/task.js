@@ -1,4 +1,4 @@
-import {DAYS, COLORS} from "../tools/consts";
+import {DAYS, COLORS, WEEK} from "../tools/consts";
 import {getRandomElement, getBoolean} from "../tools/utils";
 
 const descriptions = [`Изучить теорию`, `Сделать домашку`, `Пройти интенсив на соточку`];
@@ -11,7 +11,7 @@ const getRepeatingDays = () => {
 const getRandomDate = () => {
   const today = new Date();
   let newDate = today;
-  newDate.setDate(today.getDate() + Math.floor(Math.random() * 14 - 7));
+  newDate.setDate(today.getDate() + Math.floor(Math.random() * (WEEK - (-WEEK)) - WEEK));
   return new Date(newDate);
 };
 
