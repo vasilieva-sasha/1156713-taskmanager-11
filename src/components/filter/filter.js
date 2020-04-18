@@ -1,14 +1,14 @@
-import {createElement} from "./../../tools/utils";
-import {createTaskEditTemplate} from "./components/task-edit";
+import {createFiltersTemplate} from "./components/filter";
+import {createElement} from "../../tools/utils";
 
-export default class TaskEdit {
-  constructor(task) {
-    this._task = task;
+export default class Filter {
+  constructor(filters) {
+    this._filters = filters;
     this._element = null;
   }
 
   getTemplate() {
-    return createTaskEditTemplate(this._task);
+    return createFiltersTemplate(this._filters);
   }
 
   getElement() {

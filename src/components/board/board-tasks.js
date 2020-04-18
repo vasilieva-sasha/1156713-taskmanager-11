@@ -1,20 +1,20 @@
-import {createElement} from "./../../tools/utils";
-import {createTaskEditTemplate} from "./components/task-edit";
+import {createElement} from "../../tools/utils";
+import {createBoardTasksTemplate} from "./components/board-tasks";
 
-export default class TaskEdit {
-  constructor(task) {
-    this._task = task;
+export default class Tasks {
+  constructor() {
     this._element = null;
   }
 
   getTemplate() {
-    return createTaskEditTemplate(this._task);
+    return createBoardTasksTemplate();
   }
 
   getElement() {
     if (!this._element) {
       this._element = createElement(this.getTemplate());
     }
+
     return this._element;
   }
 

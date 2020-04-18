@@ -1,7 +1,11 @@
 export const TASK_COUNT = 22;
 export const SHOWING_TASKS_COUNT_ON_START = 8;
 export const SHOWING_TASKS_COUNT_BY_BUTTON = 8;
-export const BEFOREEND = `beforeend`;
+export const Position = {
+  BEFOREEND: `beforeend`,
+  AFTERBEGIN: `afterbegin`
+};
+
 export const MONTH_NAMES = [
   `January`,
   `February`,
