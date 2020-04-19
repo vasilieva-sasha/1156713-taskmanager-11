@@ -1,5 +1,5 @@
 import {TASK_COUNT} from "../tools/consts";
-import {tasks} from "../components/board-container";
+import {tasks} from "../components/board/components/board-container";
 
 const getOverdueCount = () => {
   return tasks.filter((task) => task.dueDate < new Date())

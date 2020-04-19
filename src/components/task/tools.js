@@ -1,6 +1,6 @@
 import {formatTime} from "./../../tools/utils";
 import {DAYS, MONTH_NAMES} from "./../../tools/consts";
-import {createRepeatingDaysMarkup} from "./repeating-days-markup";
+import {createRepeatingDaysMarkup} from "./components/repeating-days-markup";
 
 const getExpiredclass = (dueDate) => dueDate instanceof Date && dueDate < Date.now();
 const isDateShowing = (dueDate) => !!dueDate;

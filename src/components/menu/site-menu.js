@@ -1,14 +1,13 @@
-import {createElement} from "./../../tools/utils";
-import {createTaskEditTemplate} from "./components/task-edit";
+import {createMenuTemplate} from "./components/site-menu";
+import {createElement} from "../../tools/utils";
 
-export default class TaskEdit {
-  constructor(task) {
-    this._task = task;
+export default class SiteMenu {
+  constructor() {
     this._element = null;
   }
 
   getTemplate() {
-    return createTaskEditTemplate(this._task);
+    return createMenuTemplate();
   }
 
   getElement() {

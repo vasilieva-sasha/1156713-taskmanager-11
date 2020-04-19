@@ -1,5 +1,14 @@
-export const render = (container, template, place) => {
-  container.insertAdjacentHTML(place, template);
+import {Position} from "./consts";
+
+export const render = (container, element, place) => {
+  switch (place) {
+    case Position.AFTERBEGIN:
+      container.prepend(element);
+      break;
+    case Position.BEFOREEND:
+      container.append(element);
+      break;
+  }
 };
 
 const castTimeFormat = (value) => {
@@ -20,3 +29,10 @@ export const getRandomElement = (array) => {
 export const getBoolean = () => Math.random() > 0.5;
 
 export const getCheckedClass = (isChecked) => isChecked ? `checked` : ``;
+
+export const createElement = (template) => {
+  const newElement = document.createElement(`div`);
+  newElement.innerHTML = template;
+
+  return newElement.firstChild;
+};

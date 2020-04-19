@@ -1,20 +1,18 @@
-import {SHOWING_TASKS_COUNT_ON_START, SHOWING_TASKS_COUNT_BY_BUTTON, BEFOREEND} from "./consts";
-import {tasks} from "./render-tasks";
-import {render} from "./utils";
-import {createTaskTemplate} from "../components/task/task";
+import {SHOWING_TASKS_COUNT_ON_START, SHOWING_TASKS_COUNT_BY_BUTTON} from "./consts";
+import {renderTask} from "./render-tasks";
 
 let showingTasksCount = SHOWING_TASKS_COUNT_ON_START;
 
-const onLoadMoreButtonClick = () => {
-  const taskListElement = document.querySelector(`.board__tasks`);
+const onLoadMoreButtonClick = (taskListElement, tasks, loadMoreButton) => {
   const prevTasksCount = showingTasksCount;
   showingTasksCount = showingTasksCount + SHOWING_TASKS_COUNT_BY_BUTTON;
 
   tasks.slice(prevTasksCount, showingTasksCount)
-    .forEach((task) => render(taskListElement, createTaskTemplate(task), BEFOREEND));
+    .forEach((task) => renderTask(taskListElement, task));
 
   if (showingTasksCount >= tasks.length) {
-    document.querySelector(`.load-more`).remove();
+    loadMoreButton.getElement().remove();
+    loadMoreButton.removeElement();
   }
 };
 

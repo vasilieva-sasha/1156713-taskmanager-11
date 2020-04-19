@@ -1,14 +1,13 @@
-import {createElement} from "./../../tools/utils";
-import {createTaskEditTemplate} from "./components/task-edit";
+import {createBoardContainerTemplate} from "./components/board-container";
+import {createElement} from "../../tools/utils";
 
-export default class TaskEdit {
-  constructor(task) {
-    this._task = task;
+export default class Board {
+  constuctor() {
     this._element = null;
   }
 
   getTemplate() {
-    return createTaskEditTemplate(this._task);
+    return createBoardContainerTemplate();
   }
 
   getElement() {

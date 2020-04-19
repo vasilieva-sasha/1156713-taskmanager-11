@@ -1,4 +1,4 @@
-import {getCheckedClass} from "./../tools/utils";
+import {getCheckedClass} from "../../../tools/utils";
 
 const createFilterMarkup = (filter, isChecked) => {
   const {name, count} = filter;
@@ -19,7 +19,7 @@ const createFilterMarkup = (filter, isChecked) => {
 const createFiltersTemplate = (filters) => {
   const filtersMurkup = filters.map((filter, i) => createFilterMarkup(filter, i === 0)).join(`\n`);
   return (
-    ` <section class="main__filter filter container">
+    `<section class="main__filter filter container">
         ${filtersMurkup}
       </section>`
   );
