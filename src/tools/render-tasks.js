@@ -1,4 +1,5 @@
-import {render, onEscDown} from "./utils";
+import {render} from "./utils/render";
+import {onEscDown} from "./utils/utils";
 import {TASK_COUNT, SHOWING_TASKS_COUNT_ON_START, Position} from "./consts";
 import TaskEdit from "./../components/task/task-edit";
 import Task from "./../components/task/task";

@@ -1,4 +1,4 @@
-import {render} from "../../tools/utils";
+import {render} from "../../tools/utils/render";
 import {Position, TASK_COUNT, SHOWING_TASKS_COUNT_ON_START} from "../../tools/consts";
 import Sorting from "../sorting/sort";
 import Tasks from "./board-tasks";

@@ -1,5 +1,5 @@
 import NoTasksMessage from "../no-tasks";
-import {render} from "../../../tools/utils";
+import {render} from "../../../tools/utils/render";
 import {TASK_COUNT, Position} from "../../../tools/consts";
 
 const createNoTasksMarkup = () => {

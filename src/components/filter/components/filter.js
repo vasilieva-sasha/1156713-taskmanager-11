@@ -1,4 +1,4 @@
-import {getCheckedClass} from "../../../tools/utils";
+import {getCheckedClass} from "../../../tools/utils/utils";
 
 const createFilterMarkup = (filter, isChecked) => {
   const {name, count} = filter;
