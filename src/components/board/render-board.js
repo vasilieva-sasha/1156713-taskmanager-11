@@ -10,8 +10,8 @@ import {showMessage} from "../message/components/no-tasks";
 const renderBoard = (boardComponent, tasks) => {
   showMessage(tasks, boardComponent);
 
-  render(boardComponent.getElement(), new Sorting().getElement(), Position.BEFOREEND);
-  render(boardComponent.getElement(), new Tasks().getElement(), Position.BEFOREEND);
+  render(boardComponent.getElement(), new Sorting(), Position.BEFOREEND);
+  render(boardComponent.getElement(), new Tasks(), Position.BEFOREEND);
 
   const taskListElement = boardComponent.getElement().querySelector(`.board__tasks`);
 
@@ -19,7 +19,7 @@ const renderBoard = (boardComponent, tasks) => {
 
   const loadMoreButton = new LoadMoreButton();
   if (TASK_COUNT > SHOWING_TASKS_COUNT_ON_START) {
-    render(boardComponent.getElement(), loadMoreButton.getElement(), Position.BEFOREEND);
+    render(boardComponent.getElement(), loadMoreButton, Position.BEFOREEND);
     loadMoreButton.getElement().addEventListener(`click`, () => {
       onLoadMoreButtonClick(taskListElement, tasks, loadMoreButton);
     });

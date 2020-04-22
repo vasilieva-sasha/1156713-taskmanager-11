@@ -12,12 +12,12 @@ const siteHeaderElement = siteMainElement.querySelector(`.main__control`);
 const tasks = generateTasks(TASK_COUNT);
 
 const init = () => {
-  render(siteHeaderElement, new SiteMenu().getElement(), Position.BEFOREEND);
-  render(siteMainElement, new Filter(filters).getElement(), Position.BEFOREEND);
+  render(siteHeaderElement, new SiteMenu(), Position.BEFOREEND);
+  render(siteMainElement, new Filter(filters), Position.BEFOREEND);
 
   const boardComponent = new Board();
 
-  render(siteMainElement, boardComponent.getElement(), Position.BEFOREEND);
+  render(siteMainElement, boardComponent, Position.BEFOREEND);
   renderBoard(boardComponent, tasks);
 };
 

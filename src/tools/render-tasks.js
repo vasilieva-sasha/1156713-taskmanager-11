@@ -1,4 +1,4 @@
-import {render} from "./utils/render";
+import {render, replace, remove} from "./utils/render";
 import {onEscDown} from "./utils/utils";
 import {TASK_COUNT, SHOWING_TASKS_COUNT_ON_START, Position} from "./consts";
 import TaskEdit from "./../components/task/task-edit";
@@ -10,16 +10,16 @@ const tasks = generateTasks(TASK_COUNT);
 const renderTask = (taskListElement, task) => {
 
   const openTaskEdit = () => {
-    taskListElement.replaceChild(taskEditComponent.getElement(), taskComponent.getElement());
+    replace(taskEditComponent, taskComponent);
   };
 
   const closeTaskEdit = () => {
-    taskListElement.replaceChild(taskComponent.getElement(), taskEditComponent.getElement());
+    replace(taskComponent, taskEditComponent);
     document.removeEventListener(`keydown`, onEscDown);
   };
 
   const onDeleteTaskClick = () => {
-    taskEditComponent.getElement().remove();
+    remove(taskEditComponent);
     document.removeEventListener(`keydown`, onEscDown);
   };
 
@@ -48,7 +48,7 @@ const renderTask = (taskListElement, task) => {
   const deleteButton = taskEditComponent.getElement().querySelector(`.card__delete`);
   deleteButton.addEventListener(`click`, onDeleteTaskClick);
 
-  render(taskListElement, taskComponent.getElement(), Position.BEFOREEND);
+  render(taskListElement, taskComponent, Position.BEFOREEND);
 };
 
 
