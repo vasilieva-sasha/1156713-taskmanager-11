@@ -4,8 +4,8 @@ import Filter from "./components/filter/filter";
 import {filters} from "./mock/filter";
 import {render} from "./tools/utils/render";
 import {TASK_COUNT, Position} from "./tools/consts";
-import {renderBoard} from "./components/board/render-board";
 import {generateTasks} from "./mock/task";
+import BoardController from "./controllers/board";
 
 const siteMainElement = document.querySelector(`.main`);
 const siteHeaderElement = siteMainElement.querySelector(`.main__control`);
@@ -16,9 +16,10 @@ const init = () => {
   render(siteMainElement, new Filter(filters), Position.BEFOREEND);
 
   const boardComponent = new Board();
+  const boardController = new BoardController(boardComponent);
 
   render(siteMainElement, boardComponent, Position.BEFOREEND);
-  renderBoard(boardComponent, tasks);
+  boardController.render(tasks);
 };
 
 init();
