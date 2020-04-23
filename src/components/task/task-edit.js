@@ -10,4 +10,14 @@ export default class TaskEdit extends AbstractComponent {
   getTemplate() {
     return createTaskEditTemplate(this._task);
   }
+
+  setSubmitHandler(handler) {
+    this.getElement().querySelector(`form`)
+      .addEventListener(`submit`, handler);
+  }
+
+  setDeleteHandler(handler) {
+    this.getElement().querySelector(`.card__delete`)
+    .addEventListener(`click`, handler);
+  }
 }

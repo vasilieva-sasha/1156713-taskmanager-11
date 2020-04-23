@@ -36,17 +36,14 @@ const renderTask = (taskListElement, task) => {
   };
 
   const taskComponent = new Task(task);
-  const editButton = taskComponent.getElement().querySelector(`.card__btn--edit`);
 
-  editButton.addEventListener(`click`, onEditButtonClick);
+  taskComponent.setEditButtonClickHandler(onEditButtonClick);
 
   const taskEditComponent = new TaskEdit(task);
-  const editForm = taskEditComponent.getElement().querySelector(`form`);
 
-  editForm.addEventListener(`submit`, onEditFormSubmit);
+  taskEditComponent.setSubmitHandler(onEditFormSubmit);
 
-  const deleteButton = taskEditComponent.getElement().querySelector(`.card__delete`);
-  deleteButton.addEventListener(`click`, onDeleteTaskClick);
+  taskEditComponent.setDeleteHandler(onDeleteTaskClick);
 
   render(taskListElement, taskComponent, Position.BEFOREEND);
 };

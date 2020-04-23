@@ -20,7 +20,7 @@ const renderBoard = (boardComponent, tasks) => {
   const loadMoreButton = new LoadMoreButton();
   if (TASK_COUNT > SHOWING_TASKS_COUNT_ON_START) {
     render(boardComponent.getElement(), loadMoreButton, Position.BEFOREEND);
-    loadMoreButton.getElement().addEventListener(`click`, () => {
+    loadMoreButton.setClickHandler(() => {
       onLoadMoreButtonClick(taskListElement, tasks, loadMoreButton);
     });
   }
