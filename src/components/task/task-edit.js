@@ -1,24 +1,23 @@
-import {createElement} from "./../../tools/utils";
+import AbstractComponent from "../abstract-component";
 import {createTaskEditTemplate} from "./components/task-edit";
 
-export default class TaskEdit {
+export default class TaskEdit extends AbstractComponent {
   constructor(task) {
+    super();
     this._task = task;
-    this._element = null;
   }
 
   getTemplate() {
     return createTaskEditTemplate(this._task);
   }
 
-  getElement() {
-    if (!this._element) {
-      this._element = createElement(this.getTemplate());
-    }
-    return this._element;
+  setSubmitHandler(handler) {
+    this.getElement().querySelector(`form`)
+      .addEventListener(`submit`, handler);
   }
 
-  removeElement() {
-    this._element = null;
+  setDeleteHandler(handler) {
+    this.getElement().querySelector(`.card__delete`)
+    .addEventListener(`click`, handler);
   }
 }

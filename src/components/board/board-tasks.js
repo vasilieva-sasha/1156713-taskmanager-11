@@ -1,4 +1,4 @@
-import {createElement} from "../../tools/utils";
+import {createElement} from "../../tools/utils/utils";
 import {createBoardTasksTemplate} from "./components/board-tasks";
 
 export default class Tasks {

@@ -1,23 +1,8 @@
 import {createNoTasksMarkup} from "./components/no-tasks";
-import {createElement} from "../../tools/utils";
+import AbstractComponent from "../abstract-component";
 
-export default class NoTasksMessage {
-  constructor() {
-    this._element = null;
-  }
-
+export default class NoTasksMessage extends AbstractComponent {
   getTemplate() {
     return createNoTasksMarkup();
-  }
-
-  getElement() {
-    if (!this._element) {
-      this._element = createElement(this.getTemplate());
-    }
-    return this._element;
-  }
-
-  removeElement() {
-    this._element = null;
   }
 }

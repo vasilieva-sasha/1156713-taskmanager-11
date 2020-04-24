@@ -1,5 +1,5 @@
 import {DAYS, COLORS, WEEK} from "../tools/consts";
-import {getRandomElement, getBoolean} from "../tools/utils";
+import {getRandomElement, getBoolean} from "../tools/utils/utils";
 
 const descriptions = [`Изучить теорию`, `Сделать домашку`, `Пройти интенсив на соточку`];
 

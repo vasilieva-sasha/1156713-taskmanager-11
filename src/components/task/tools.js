@@ -1,4 +1,4 @@
-import {formatTime} from "./../../tools/utils";
+import {formatTime} from "../../tools/utils/utils";
 import {DAYS, MONTH_NAMES} from "./../../tools/consts";
 import {createRepeatingDaysMarkup} from "./components/repeating-days-markup";
 
