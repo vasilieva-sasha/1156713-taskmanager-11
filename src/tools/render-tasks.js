@@ -49,8 +49,8 @@ const renderTask = (taskListElement, task) => {
 };
 
 
-const renderTasks = (taskListElement) => {
-  tasks.slice(0, SHOWING_TASKS_COUNT_ON_START)
+const renderTasks = (taskListElement, tasksArray, showingTasksCount) => {
+  tasksArray.slice(0, showingTasksCount)
   .forEach((task) => renderTask(taskListElement, task));
 };
 
