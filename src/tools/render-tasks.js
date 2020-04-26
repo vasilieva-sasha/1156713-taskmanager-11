@@ -1,6 +1,6 @@
 import {render, replace, remove} from "./utils/render";
 import {onEscDown} from "./utils/utils";
-import {TASK_COUNT, SHOWING_TASKS_COUNT_ON_START, Position} from "./consts";
+import {TASK_COUNT, Position} from "./consts";
 import TaskEdit from "./../components/task/task-edit";
 import Task from "./../components/task/task";
 import {generateTasks} from "../mock/task";
@@ -49,9 +49,8 @@ const renderTask = (taskListElement, task) => {
 };
 
 
-const renderTasks = (taskListElement, tasksArray, showingTasksCount) => {
-  tasksArray.slice(0, showingTasksCount)
-  .forEach((task) => renderTask(taskListElement, task));
+const renderTasks = (taskListElement, tasksArray) => {
+  tasksArray.forEach((task) => renderTask(taskListElement, task));
 };
 
 export {tasks, renderTask, renderTasks};

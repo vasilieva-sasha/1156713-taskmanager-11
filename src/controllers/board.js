@@ -5,7 +5,6 @@ import NoTasksMessage from "../components/message/no-tasks";
 import {render, remove} from "../tools/utils/render";
 import {renderTasks} from "../tools/render-tasks";
 import {Position, TASK_COUNT, SHOWING_TASKS_COUNT_ON_START, SHOWING_TASKS_COUNT_BY_BUTTON} from "../tools/consts";
-import {onLoadMoreButtonClick} from "../tools/load-more-button";
 import {getSortedTasks} from "../components/sorting/components/sort";
 
 export default class BoardController {
@@ -20,6 +19,19 @@ export default class BoardController {
 
   render(tasks) {
     const container = this._container.getElement();
+    let showingTasksCount = SHOWING_TASKS_COUNT_ON_START;
+
+    const onLoadMoreButtonClick = (taskListElement) => {
+      const prevTasksCount = showingTasksCount;
+      showingTasksCount = showingTasksCount + SHOWING_TASKS_COUNT_BY_BUTTON;
+      const sortedTasks = getSortedTasks(tasks, this._sortComponent.getSortType(), prevTasksCount, showingTasksCount);
+
+      renderTasks(taskListElement, sortedTasks);
+
+      if (showingTasksCount >= tasks.length) {
+        remove(this._loadButtonComponent);
+      }
+    };
 
     const renderLoadMoreButton = () => {
       remove(this._loadButtonComponent);
@@ -27,7 +39,7 @@ export default class BoardController {
       if (tasks.length > SHOWING_TASKS_COUNT_ON_START) {
         render(container, this._loadButtonComponent, Position.BEFOREEND);
         this._loadButtonComponent.setClickHandler(() => {
-          onLoadMoreButtonClick(taskListElement, tasks, this._loadButtonComponent);
+          onLoadMoreButtonClick(taskListElement);
         });
       }
     };
@@ -44,15 +56,17 @@ export default class BoardController {
 
     const taskListElement = this._tasksComponent.getElement();
 
-    renderTasks(taskListElement, tasks, SHOWING_TASKS_COUNT_ON_START);
+    renderTasks(taskListElement, tasks.slice(0, showingTasksCount));
 
     renderLoadMoreButton();
 
     this._sortComponent.setSortTypeChangeHandler((sortType) => {
+      showingTasksCount = SHOWING_TASKS_COUNT_ON_START;
+
+      const sortedTasks = getSortedTasks(tasks, sortType, 0, showingTasksCount);
 
       taskListElement.innerHTML = ``;
-      const sortedTasks = getSortedTasks(tasks, sortType);
-      renderTasks(taskListElement, sortedTasks, SHOWING_TASKS_COUNT_BY_BUTTON);
+      renderTasks(taskListElement, sortedTasks);
       renderLoadMoreButton();
     });
   }

@@ -10,7 +10,7 @@ const createSortingTemplate = () => {
   );
 };
 
-const getSortedTasks = (tasks, sortType) => {
+const getSortedTasks = (tasks, sortType, from, to) => {
   let sortedTasks = [];
   const showingTasks = tasks.slice();
 
@@ -26,7 +26,7 @@ const getSortedTasks = (tasks, sortType) => {
       break;
   }
 
-  return sortedTasks;
+  return sortedTasks.slice(from, to);
 };
 
 export {createSortingTemplate, getSortedTasks};
