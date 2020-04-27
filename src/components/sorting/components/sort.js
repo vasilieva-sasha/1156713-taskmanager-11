@@ -10,23 +10,20 @@ const createSortingTemplate = () => {
   );
 };
 
-const getSortedTasks = (tasks, sortType, from, to) => {
-  let sortedTasks = [];
-  const showingTasks = tasks.slice();
-
-  switch (sortType) {
-    case SortType.DATE_UP:
-      sortedTasks = showingTasks.sort((newerDate, olderDate) => newerDate.dueDate - olderDate.dueDate);
-      break;
-    case SortType.DATE_DOWN:
-      sortedTasks = showingTasks.sort((newerDate, olderDate) => olderDate.dueDate - newerDate.dueDate);
-      break;
-    case SortType.DEFAULT:
-      sortedTasks = showingTasks;
-      break;
-  }
-
-  return sortedTasks.slice(from, to);
+let sortedTasks = [];
+const getSortedTasks = {
+  [SortType.DATE_UP]: (tasks, from, to) => {
+    sortedTasks = tasks.slice().sort((newerDate, olderDate) => newerDate.dueDate - olderDate.dueDate);
+    return sortedTasks.slice(from, to);
+  },
+  [SortType.DATE_DOWN]: (tasks, from, to) => {
+    sortedTasks = tasks.slice().sort((newerDate, olderDate) => olderDate.dueDate - newerDate.dueDate);
+    return sortedTasks.slice(from, to);
+  },
+  [SortType.DEFAULT]: (tasks, from, to) => {
+    sortedTasks = tasks.slice();
+    return sortedTasks.slice(from, to);
+  },
 };
 
 export {createSortingTemplate, getSortedTasks};
